@@ -1,0 +1,10 @@
+[Unit]
+Description=Wiegand
+[Service]
+Type=simple
+ExecStart=/path/to/wiegand
+Restart=always
+RestartSec=10
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
