@@ -16,6 +16,8 @@
 
 #include "parse.h"
 
+#include <stdio.h>
+
 int wiegand_26bit_nofacility(
 	unsigned char *databits, unsigned char bitCount,
 	unsigned long *cardCode, unsigned long *facilityCode)
@@ -109,15 +111,15 @@ int wiegand_37bit(
 	// facility code = bits 2 to 17
 	for (i=2; i<17; i++)
 	{
-		facilityCode <<=1;
-		facilityCode |= databits[i];
+		*facilityCode <<=1;
+		*facilityCode |= databits[i];
 	}
 
 	// card code = bits 18 to 36
 	for (i=18; i<36; i++)
 	{
-		cardCode <<=1;
-		cardCode |= databits[i];
+		*cardCode <<=1;
+		*cardCode |= databits[i];
 	}
 
 	return PARSE_METHOD_MATCH;
